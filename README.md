@@ -22,3 +22,7 @@ Before you begin development, prepare your `serverless` boilerplate, with your c
 2. Modify `package.json` file, its properties and the list of packages if needed.
 3. There is an example file called `/controllers/demo.ts`, modify / change this section and its contents. Or, you may modify the rest of the `src` folder and its contents.
 4. 
+
+## Testing
+
+See https://www.serverless.com/framework/docs/providers/aws/guide/workflow/.
