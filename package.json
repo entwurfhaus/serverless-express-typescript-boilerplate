@@ -1,7 +1,7 @@
 {
   "name": "serverless-express-typescript-boilerplate",
   "version": "1.0.1",
-  "description": "",
+  "description": "A serverless boilerplate project, bundled with express and typescript.",
   "main": "handler.js",
   "scripts": {
     "dev": "serverless offline start --stage development",

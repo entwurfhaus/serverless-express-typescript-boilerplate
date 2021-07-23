@@ -1,3 +1,5 @@
+# https://www.serverless.com/framework/docs/providers/aws/guide/serverless.yml/
+
 service: serverless-ets-boilerplate
 
 frameworkVersion: '2'
@@ -16,12 +18,13 @@ useDotenv: true
 # Provider defined as "AWS"
 provider:
   name: aws
-  runtime: nodejs12.x
+  runtime: nodejs14.x
   lambdaHashingVersion: '20201221'
   environment:
     STAGE: ${opt:stage, 'development'}
   region: ap-southeast-2
   httpApi:
+    name: ${sls:stage}-${self:service} # Use custom name for the API Gateway API, default is ${sls:stage}-${self:service}
     cors: true
 
 # Serverless plugins used
@@ -33,12 +36,15 @@ plugins:
 # Defined serverless functions - express api routes
 functions:
   api:
+    name: ${sls:stage}-lambdaName # optional, Deployed Lambda name
     description: A serverless + express + typescript demo project.
     handler: handler.api
     events:
       - httpApi:
           method: '*'
           path: '/{proxy+}'
+    memorySize: 512 # optional, in MB, default is 1024
+    timeout: 10 # optional, in seconds, default is 6
 
 custom:
   dotenv:
