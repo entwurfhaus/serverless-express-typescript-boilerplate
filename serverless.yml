@@ -1,0 +1,84 @@
+service: serverless-ets-boilerplate
+
+frameworkVersion: '2'
+
+# Important: `serverless login` first if it is your first `serverless` setup.
+# org: brifiction
+# app: serverless-ets-boilerplate
+
+# Create an optimized package for our functions
+package:
+  individually: true
+
+# Using .env file
+useDotenv: true
+
+# Provider defined as "AWS"
+provider:
+  name: aws
+  runtime: nodejs12.x
+  lambdaHashingVersion: '20201221'
+  environment:
+    STAGE: ${opt:stage, 'development'}
+  region: ap-southeast-2
+  httpApi:
+    cors: true
+
+# Serverless plugins used
+plugins:
+  - serverless-bundle
+  - serverless-offline
+  - serverless-dotenv-plugin
+
+# Defined serverless functions - express api routes
+functions:
+  api:
+    description: A serverless + express + typescript demo project.
+    handler: handler.api
+    events:
+      - httpApi:
+          method: '*'
+          path: '/{proxy+}'
+
+custom:
+  dotenv:
+    include:
+      - DEBUG
+      - ENVIRONMENT
+  bundle:
+    # sourcemaps: true                # Enable source maps
+    # caching: true                   # Enable Webpack caching
+    # stats: false                    # Don't print out any Webpack output
+    linting: false                   # Enable linting as a part of the build process
+    # disableForkTsChecker: false     # Disable the ForkTsChecker plugin, more below
+    # tsConfig: "tsconfig.json"       # Path to your 'tsconfig.json', if it's not in the root
+    # forceInclude:                   # Optional list of NPM packages that need to be included
+    #   - mysql                         # Only necessary if packages are included dynamically
+    # ignorePackages:                 # Ignore building any of the following packages
+    #   - hiredis                       # For ex, hiredis needs to be ignored if using redis
+    # externals:                      # Set non Webpack compatible packages as externals
+    #   - isomorphic-webcrypto          # They'll be included in the node_modules/, more below
+    # forceExclude:                   # Don't include these in the package
+    #   - chrome-aws-lambda             # Because it'll be provided through a Lambda Layer
+    # excludeFiles: "**/*.test.ts"    # Exclude files from Webpack that match the glob
+    # fixPackages:                    # Include fixes for specific packages
+    #   - "formidable@1.x"              # For ex, formidable@1.x doesn't work by default with Webpack
+    # copyFiles:                      # Copy any additional files to the generated package
+    #   - from: 'public/*'              # Where the files are currently
+    #     to: './'                      # Where in the package should they go
+    # aliases:                        # Create an alias to 'import' modules easily with a custom path
+    #   - Lib: custom-lib/src/lib       # For ex, replace the long 'custom-lib/src/lib' with 'Lib'
+    # concatText:                     # Concatenate text files into one file on the generated package
+    #   - files: 'schema/*.txt'         # Where the files that need to be concatenated are currently located
+    #     outputPath: './'              # Where the concatenated file should go in the package
+    #     name: 'schema.txt'            # The name the the concatenated file should have
+    packager: yarn                   # Specify a packager, 'npm' or 'yarn'. Defaults to 'npm'.
+    # packagerOptions:                # Run a custom script in the package process
+    #   scripts:                        # https://github.com/serverless-heaven/serverless-webpack#custom-scripts
+    #     - echo hello > test
+    # rawFileExtensions:              # An array of file extensions to import using the Webpack raw-loader.
+    #   - csv                         # Defaults to ['pem', 'txt']
+  serverless-offline:
+    # useDocker: true
+    httpPort: 5001
+    lambdaPort: 3005

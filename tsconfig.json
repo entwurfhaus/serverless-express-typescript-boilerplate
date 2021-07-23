@@ -1,0 +1,22 @@
+{
+    "compilerOptions": {
+      "baseUrl": "./",
+      "paths": {
+        "controllers/*": ["src/controllers/*"],
+        // "constants/*": ["src/constants/*"],
+        // "clients/*": ["src/clients/*"],
+        "middleware/*": ["src/utils/middleware/*"],
+        // "routes/*": ["src/routes/*"], 
+        "exceptions/*": ["src/utils/exceptions/*"],
+        // "types/*": ["src/types/*"],
+        // "services/*": ["src/services/*"],
+        // "models/*": ["src/models/*"],
+        "utils/*": ["src/utils/*"], 
+      },  
+      "target": "es6",
+      "resolveJsonModule": true,
+      "sourceMap": true,
+      "moduleResolution": "node",
+      "allowSyntheticDefaultImports": true
+    }
+  }
