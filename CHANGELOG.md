@@ -15,6 +15,16 @@ Update this section with the latest testing information and details, of the plat
 
 Please see `package.json` file, `node` dependencies' versions.
 
+## [1.0.2] - 2021-07-24
+This is a `recommended` release to use the boilerplate in your first project initialisation.
+
+### Added
+1. Feature: Prevent `npm` usage, with "fake engine" defined in `package.json` file.
+2. Feature Introduced `http-errors` for HTTP errors returned by `exoress` API service.
+3. Feature: Defined new `express` folder structure, based on `node` best practices.
+### Changed
+1. Refactor: Removed old / deprecated files.
+
 ## [1.0.1] - 2021-07-23
 This is a `recommended` release to use the boilerplate in your first project initialisation.
 
