@@ -24,9 +24,6 @@ This is a `recommended` release to use the boilerplate in your first project ini
 3. Feature: Defined new `express` folder structure, based on `node` best practices.
 ### Changed
 1. Refactor: Removed old / deprecated files.
-2. 
-### Fixed
-1. N/A
 
 ## [1.0.1] - 2021-07-23
 This is a `recommended` release to use the boilerplate in your first project initialisation.
