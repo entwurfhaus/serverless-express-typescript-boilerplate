@@ -2,6 +2,11 @@
   "name": "serverless-express-typescript-boilerplate",
   "version": "1.0.1",
   "description": "A serverless boilerplate project, bundled with express and typescript.",
+  "engines": {
+    "npm": "please-use-yarn",
+    "yarn": ">= 1.22.0",
+    "node": ">= 12.8.0"
+  },
   "main": "handler.js",
   "scripts": {
     "dev": "serverless offline start --stage development",
@@ -15,6 +20,7 @@
     "cors": "^2.8.5",
     "express": "^4.17.1",
     "helmet": "^4.6.0",
+    "http-errors": "^1.7.2",
     "moment": "^2.29.1",
     "node-cache": "^5.1.2",
     "serverless-http": "^2.7.0"
